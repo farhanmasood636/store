@@ -17,7 +17,7 @@ const HomeSlider = () => {
 
     let samsung = ['/samsung/slide1.webp', '/samsung/slide2.jpg', '/samsung/slide3.jpg', '/samsung/slide4.jpg', '/samsung/slide5.jpg']
 
-    let apple = ['/apple/slide1.jpg', '/apple/slide2.jpg', '/apple/slide3.jpg', '/apple/slide4.jpg', '/apple/slide5.jpg', '/apple/slide6.png', '/apple/slide7.jpg', '/apple/slide8.jpg']
+    let apple = ['/apple/slide1.jpg', '/apple/slide2.jpg', '/apple/slide3.jpg', '/apple/slide4.jpg', '/apple/slide5.jpg', '/apple/slide6.png', '/apple/slide7.jpg']
 
     let onePlus = ['/oneplus/slide1.webp', '/oneplus/slide2.jpeg', '/oneplus/slide3.jpeg', '/oneplus/slide4.jpeg', '/oneplus/slide5.jpeg']
 
@@ -27,7 +27,7 @@ const HomeSlider = () => {
 
     let watches = ['/watches/slide1.webp', '/watches/slide2.webp', '/watches/slide3.webp', '/watches/slide4.webp', '/watches/slide5.jpg', '/watches/slide6.jpg', '/watches/slide7.jpg']
 
-    let mobiles = ['/slider1.jpg', '/slider1.jpg', '/slider1.jpg']
+    let mobiles = ['/mobiles/slide1.jpg', '/mobiles/slide2.jpg', '/mobiles/slide3.jpg', '/mobiles/slide4.jpg', '/mobiles/slide5.webp', '/mobiles/slide6.jpeg', '/mobiles/slide7.webp', '/mobiles/slide8.jpg',]
 
     if (pathname === '/') {
         slides = home

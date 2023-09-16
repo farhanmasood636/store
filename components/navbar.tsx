@@ -18,7 +18,7 @@ const Navbar = async () => {
         <div className="flex justify-center items-center flex-col w-[100%] mb-5 gap-10">
           <div className="px-4 sm:px-6 lg:px-8 flex h-28 items-center justify-between w-[100%]">
             <a href="/" className="w-40 h-40">
-              <img src="/logo.jpeg" alt="direct promotion logo" className="w-full h-full object-contain" />
+              <img src="/logo/logo.jpeg" alt="direct promotion logo" className="w-full h-full object-contain" />
             </a>
             <div className="max-md:hidden w-[50%] relative">
               <SearchBar data={products} />

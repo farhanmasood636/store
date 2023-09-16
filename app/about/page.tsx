@@ -38,7 +38,7 @@ const About = () => {
                 <div className="flex gap-5 mt-10 max-md:flex-col justify-center items-center">
                     <div>
                         <img
-                            src="/buy.jpg"
+                            src="/about/buy.jpg"
                             alt="buy"
                         />
                     </div>
@@ -54,7 +54,7 @@ const About = () => {
                 <div className="flex gap-5 mt-10 max-md:flex-col justify-center items-center">
                     <div>
                         <img
-                            src="/the-horn.jpg"
+                            src="/about/the-horn.jpg"
                             alt="the horn"
                         />
                     </div>

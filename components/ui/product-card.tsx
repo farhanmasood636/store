@@ -69,7 +69,7 @@ const ProductCard: React.FC<ProductCard> = ({
         <div className="flex items-center gap-2 flex-wrap">
           <p className="text-sm text-white p-[10px] bg-[#FB6D11] rounded-2xl">{data?.carrier?.name}</p>
           <p className="text-sm text-white p-[10px] bg-[#FB6D11] rounded-2xl">{data?.condition?.name}</p>
-          <p className="text-sm text-white p-[10px] bg-[#FB6D11] rounded-2xl">{data?.storage?.name}</p>
+          <p className="text-sm text-white p-[10px] bg-[#FB6D11] rounded-2xl">{data?.storage?.name}GB</p>
           <p className="text-sm text-white p-[10px] bg-[#FB6D11] rounded-2xl">{data?.network?.name}</p>
         </div>
       </div>

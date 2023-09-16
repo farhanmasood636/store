@@ -9,7 +9,7 @@ const CategoriesShowdown: React.FC<MainNavProps> = ({ data }) => {
     const routes = data.map((route) => ({
         href: `/category/${route.id}`,
         label: route.name,
-        img: route.name === 'Mobile Phones' && "category2.jpg" || route.name === 'Tablets' && "category3.jpeg" || route.name === 'Watches' && "category1.png"
+        img: route.name === 'Mobile Phones' && "categories/category2.jpg" || route.name === 'Tablets' && "categories/category3.jpeg" || route.name === 'Watches' && "categories/category1.png"
     }));
 
     return (

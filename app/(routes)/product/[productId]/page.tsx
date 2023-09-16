@@ -74,7 +74,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
   let row2 = [
     {
       icon: <Database className={defaultClassName} />,
-      label: product?.storage?.name,
+      label: `${product?.storage?.name}GB`,
       name: "Storage",
     },
     {
