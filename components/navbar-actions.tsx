@@ -18,6 +18,7 @@ interface NavbarActionProps {
 const NavbarActions: React.FC<NavbarActionProps> = ({ data, data1 }) => {
   const [isMounted, setIsMounted] = useState(false);
   const [toggle, setToggle] = useState(false);
+  const pathname = usePathname();
   const router = useRouter();
   const cart = useCart();
 
@@ -29,7 +30,6 @@ const NavbarActions: React.FC<NavbarActionProps> = ({ data, data1 }) => {
     return null;
   }
 
-  const pathname = usePathname();
 
   const routes = data.map((route) => ({
     href: `/brand/${route.id}`,

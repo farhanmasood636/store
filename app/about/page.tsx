@@ -29,7 +29,7 @@ const About = () => {
                 </p>
                 <br />
                 <p className="max-md:text-sm text-lg text-gray-500">
-                    Today, A&A Phones Services LLC is a flourishing e-commerce business and the nation's
+                    Today, A&A Phones Services LLC is a flourishing e-commerce business and the nation&apos;s
                     leading consumer electronics trade-in site for buying and selling
                     certified pre-owned devices. We work hand-in-hand with our customers to
                     ensure positive outcomes in every part of the consumer electronics life
@@ -46,7 +46,7 @@ const About = () => {
                         <h1 className="max-sm:text-lg text-2xl font-bold text-center mb-5">Buy Products in <span className="text-[#FB6D11]">Volume</span> </h1>
                         <p className="max-md:text-sm text-lg text-gray-500">
                             Interested in buying or selling high-end smartphones, laptops, or
-                            tablets in bulk? We're ready to help!
+                            tablets in bulk? We&apos;re ready to help!
                         </p>
                     </div>
 
@@ -62,7 +62,7 @@ const About = () => {
                         <h1 className="max-sm:text-lg text-2xl font-bold text-center mb-5">The <span className='text-[#FB6D11]'>Horn</span></h1>
                         <p className="max-md:text-sm text-lg text-gray-500">
                             Interested in buying or selling high-end smartphones, laptops, or
-                            tablets in bulk? We're ready to help!
+                            tablets in bulk? We&apos;re ready to help!
                         </p>
                     </div>
                 </div>

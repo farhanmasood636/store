@@ -134,23 +134,23 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
             </h1>
             <div className="flex flex-col gap-40 max-md:gap-10 justify-center items-center">
               <div className="flex justify-between items-center max-md:flex-col max-md:gap-10 w-[100%]">
-                {row1.map((specs) => (
-                  <SpecsCard icon={specs.icon} label={specs.label} name={specs.name} />
+                {row1.map((specs, index) => (
+                  <SpecsCard key={index} icon={specs.icon} label={specs.label} name={specs.name} />
                 ))}
               </div>
               <div className="flex justify-between items-center max-md:flex-col max-md:gap-10 w-[100%]">
-                {row2.map((specs) => (
-                  <SpecsCard icon={specs.icon} label={specs.label} name={specs.name} />
+                {row2.map((specs, index) => (
+                  <SpecsCard key={index} icon={specs.icon} label={specs.label} name={specs.name} />
                 ))}
               </div>
               <div className="flex justify-between items-center max-md:flex-col max-md:gap-10 w-[100%]">
-                {row3.map((specs) => (
-                  <SpecsCard icon={specs.icon} label={specs.label} name={specs.name} />
+                {row3.map((specs, index) => (
+                  <SpecsCard key={index} icon={specs.icon} label={specs.label} name={specs.name} />
                 ))}
               </div>
               <div className="flex justify-between items-center max-md:flex-col max-md:gap-10 w-[100%]">
-                {row4.map((specs) => (
-                  <SpecsCard icon={specs.icon} label={specs.label} name={specs.name} />
+                {row4.map((specs, index) => (
+                  <SpecsCard key={index} icon={specs.icon} label={specs.label} name={specs.name} />
                 ))}
               </div>
             </div>
