@@ -5,10 +5,9 @@ import Footer from "@/components/footer";
 
 import "./globals.css";
 
-
 export const metadata = {
-  title: "A&A Phone Services LLC",
-  description: "A&A - Phone Services",
+  title: "Direct Promotion",
+  description: "Direct Promotion",
 };
 
 export default function RootLayout({
