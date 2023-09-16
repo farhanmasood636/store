@@ -56,17 +56,22 @@ const ProductCard: React.FC<ProductCard> = ({
           </div>
         </div>
       </div>
-      <div>
-        <a href={`/product/${data?.id}`}>
-          <p className="cursor-pointer font-semibold text-lg">{data?.name}</p>
-        </a>
-        <p className="text-sm text-gray-500">{data?.description}</p>
-      </div>
-      <div className="flex items-center justify-between">
-        <Currency value={data?.price} />
-      </div>
-      <div className="flex items-center justify-between">
-        <p className="text-sm text-gray-500">{data?.carrier?.name} | {data?.condition?.name}</p>
+      <div className="bg-gray-200 p-5 rounded-xl">
+        <div>
+          <a href={`/product/${data?.id}`}>
+            <p className="text-left cursor-pointer font-semibold text-xl max-md:text-lg mb-2">{data?.name}</p>
+          </a>
+          <p className="text-left text-sm text-gray-500 mb-2 h-[90px] max-lg:h-[100px]">{data?.description}</p>
+        </div>
+        <div className="flex items-center justify-between mb-3 font-semibold text-xl max-md:text-lg border border-b-black">
+          <Currency value={data?.price} />
+        </div>
+        <div className="flex items-center gap-2 flex-wrap">
+          <p className="text-sm text-white p-[10px] bg-[#FB6D11] rounded-2xl">{data?.carrier?.name}</p>
+          <p className="text-sm text-white p-[10px] bg-[#FB6D11] rounded-2xl">{data?.condition?.name}</p>
+          <p className="text-sm text-white p-[10px] bg-[#FB6D11] rounded-2xl">{data?.storage?.name}</p>
+          <p className="text-sm text-white p-[10px] bg-[#FB6D11] rounded-2xl">{data?.network?.name}</p>
+        </div>
       </div>
     </div>
   );

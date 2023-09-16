@@ -58,7 +58,7 @@ const Footer = () => {
           </div>
           <div className="flex flex-col gap-10">
             <h1 className="text-[#FB6D11] text-xl font-bold">Connect With Us</h1>
-            <div className="flex gap-10">
+            <div className="flex gap-10 justify-center items-center">
               <a href="https://instagram.com/direct_promotiononline?igshid=NzZlODBkYWE4Ng==" target="_blank">
                 <Facebook className="h-8 w-8 text-white hover:text-[#FB6D11]" />
               </a>
@@ -69,11 +69,11 @@ const Footer = () => {
                 <BsWhatsapp className="h-8 w-8 text-white hover:text-[#FB6D11]" />
               </a>
             </div>
-            <div className="flex gap-10">
-              <FaCcVisa className="h-10 w-10 text-white hover:text-[#FB6D11]" />
-              <FaCcMastercard className="h-10 w-10 text-white hover:text-[#FB6D11]" />
-              <SiAmericanexpress className="h-10 w-10 text-white hover:text-[#FB6D11]" />
-              <FaCcDiscover className="h-10 w-10 text-white hover:text-[#FB6D11]" />
+            <div className="flex gap-10 justify-center items-center">
+              <FaCcVisa className="h-10 w-10 text-white" />
+              <FaCcMastercard className="h-10 w-10 text-white" />
+              <SiAmericanexpress className="h-10 w-10 text-white" />
+              <FaCcDiscover className="h-10 w-10 text-white" />
             </div>
           </div>
           <div className="flex flex-col gap-5">

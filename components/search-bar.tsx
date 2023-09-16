@@ -37,11 +37,19 @@ const SearchBar: React.FC<SearchBarProps> = ({ data }) => {
                                         <div className='flex justify-center items-center h-10 w-10'>
                                             <img src={product.images?.[0]?.url} alt={product?.name} className='h-full w-full' />
                                         </div>
-                                        <div className='flex flex-col'>
+                                        <div className='flex-col'>
                                             <p className="text-lg">{product?.name}</p>
-                                            <p className="text-sm">
-                                                {product?.condition?.name}
-                                            </p>
+                                            <div className='flex gap-5'>
+                                                <p className="text-sm">
+                                                    {product?.condition?.name}
+                                                </p>
+                                                <p className="text-sm">
+                                                    {product?.storage?.name}GB
+                                                </p>
+                                                <p className="text-sm">
+                                                    {product?.carrier?.name}
+                                                </p>
+                                            </div>
                                         </div>
                                     </a>
                                 ))}

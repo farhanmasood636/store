@@ -4,30 +4,12 @@ interface MainNavProps {
     data: Category[];
 }
 
-const cardList = [
-    {
-        img: "wallpaper1.png",
-        title: "Watches",
-        href: '/category/f6e77843-7486-42cc-bda4-6c80987765e6'
-    },
-    {
-        img: "wallpaper2.jpg",
-        title: "Mobile Phones",
-        href: '/category/b9884b41-7063-4cad-aa83-5ebaa931ca13'
-    },
-    {
-        img: "wallpaper3.jpg",
-        title: "Laptops",
-        href: '/category/d4dcc271-a84c-4b1b-820a-fcc7b37798d7'
-    },
-];
-
 const CategoriesShowdown: React.FC<MainNavProps> = ({ data }) => {
 
     const routes = data.map((route) => ({
         href: `/category/${route.id}`,
         label: route.name,
-        img: route.name === 'Mobile Phones' && "wallpaper2.jpg" || route.name === 'Laptops' && "wallpaper3.jpg" || route.name === 'Watches' && "wallpaper1.png"
+        img: route.name === 'Mobile Phones' && "category2.jpg" || route.name === 'Tablets' && "category3.jpeg" || route.name === 'Watches' && "category1.png"
     }));
 
     return (
