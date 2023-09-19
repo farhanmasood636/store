@@ -1,4 +1,4 @@
-import { DollarSign, Globe, Mail, MapPin, Phone } from "lucide-react";
+import { Globe, Mail, MapPin, Phone } from "lucide-react";
 
 const Contact = () => {
   return (
