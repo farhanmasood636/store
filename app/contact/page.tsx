@@ -15,25 +15,25 @@ const Contact = () => {
             <div className="mb-12 flex flex-wrap justify-between gap-x-20">
               <div className="mx-auto mb-12 text-center lg:mb-0">
                 <Globe className="mx-auto mb-6 h-8 w-8 text-[#FB6D11]" />
-                <h6 className="text-black font-bold max-sm:text-sm text-lg">
-                  Unites States
+                <h6 className="text-white font-bold max-sm:text-sm text-lg">
+                  United States
                 </h6>
               </div>
               <div className="mx-auto mb-12 text-center lg:mb-0">
                 <MapPin className="mx-auto mb-6 h-8 w-8 text-[#FB6D11]" />
-                <h6 className="text-black font-bold max-sm:text-sm text-lg">
+                <h6 className="text-white font-bold max-sm:text-sm text-lg">
                   Baltimore, Maryland
                 </h6>
               </div>
               <div className="mx-auto mb-12 text-center lg:mb-0">
                 <Phone className="mx-auto mb-6 h-8 w-8 text-[#FB6D11]" />
-                <h6 className="text-black font-bold max-sm:text-sm text-lg">
-                  +92 000-000-000
+                <h6 className="text-white font-bold max-sm:text-sm text-lg">
+                  +1-779-218-8306
                 </h6>
               </div>
               <div className="mx-auto mb-12 text-center lg:mb-0">
                 <Mail className="mx-auto mb-6 h-8 w-8 text-[#FB6D11]" />
-                <h6 className="text-black font-bold max-sm:text-sm text-lg">
+                <h6 className="text-white font-bold max-sm:text-sm text-lg">
                   <a href="mailto:support@directpromotion.online">
                     support@directpromotion.online
                   </a>{" "}
@@ -45,26 +45,26 @@ const Contact = () => {
                 <div className="relative mb-6" data-te-input-wrapper-init>
                   <input
                     type="text"
-                    className="block min-h-[auto] w-full rounded-md bg-transparent py-[0.32rem] px-3 border border-solid border-black text-black outline-none"
+                    className="block min-h-[auto] w-full rounded-md bg-transparent py-[0.32rem] px-3 border border-solid border-black text-white outline-none"
                     placeholder="Name"
                   />
                 </div>
                 <div className="relative mb-6" data-te-input-wrapper-init>
                   <input
                     type="email"
-                    className="block min-h-[auto] w-full rounded-md bg-transparent py-[0.32rem] px-3 border border-solid border-black text-black outline-none"
+                    className="block min-h-[auto] w-full rounded-md bg-transparent py-[0.32rem] px-3 border border-solid border-black text-white outline-none"
                     placeholder="Email address"
                   />
                 </div>
                 <div className="relative mb-6" data-te-input-wrapper-init>
                   <textarea
-                    className="block min-h-[auto] w-full rounded-md bg-transparent py-[0.32rem] px-3 border border-solid border-black text-black outline-none"
+                    className="block min-h-[auto] w-full rounded-md bg-transparent py-[0.32rem] px-3 border border-solid border-black text-white outline-none"
                     rows={3}
                     placeholder="Your message"
                   ></textarea>
                 </div>
                 <button
-                  type="button"
+                  type="submit"
                   className="font-bold w-full text-center bg-black hover:bg-[#FB6D11] hover:text-white rounded-lg p-3 text-white"
                 >
                   Send

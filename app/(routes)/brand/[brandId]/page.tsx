@@ -15,7 +15,7 @@ import getNetworks from "@/actions/get-networks";
 
 export const revalidate = 0;
 
-interface BandPageProps {
+interface BrandPageProps {
   params: {
     brandId: string;
   };
@@ -28,10 +28,7 @@ interface BandPageProps {
   };
 }
 
-const BandPage: React.FC<BandPageProps> = async ({
-  params,
-  searchParams,
-}) => {
+const BandPage: React.FC<BrandPageProps> = async ({ params, searchParams }) => {
   const products = await getProducts({
     brandId: params.brandId,
     colorId: searchParams.colorId,
@@ -54,11 +51,21 @@ const BandPage: React.FC<BandPageProps> = async ({
         </div>
         <div className="px-4 sm:px-6 lg:px-8 pb-24">
           <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
-            <MobileFilters colors={colors} storages={storages} conditions={conditions} carriers={carriers} networks={networks} />
+            <MobileFilters
+              colors={colors}
+              storages={storages}
+              conditions={conditions}
+              carriers={carriers}
+              networks={networks}
+            />
             <div className="hidden lg:block">
               <Filter valueKey="colorId" name="Colors" data={colors} />
               <Filter valueKey="storageId" name="Storages" data={storages} />
-              <Filter valueKey="conditionId" name="Conditions" data={conditions} />
+              <Filter
+                valueKey="conditionId"
+                name="Conditions"
+                data={conditions}
+              />
               <Filter valueKey="carrierId" name="Carriers" data={carriers} />
               <Filter valueKey="networkId" name="Networks" data={networks} />
             </div>

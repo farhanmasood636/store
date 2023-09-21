@@ -49,7 +49,7 @@ const Footer = () => {
               <PhoneCall className="h-4 w-4 text-white" />
               <div className="text-white flex flex-col text-sm gap-2">
                 <p>+1 779 218-8306</p>
-                <p>9 Am – 6 PM ESTT</p>
+                <p>9 AM – 6 PM EST</p>
                 <p>Monday to Saturday</p>
               </div>
             </div>

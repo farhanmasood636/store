@@ -21,14 +21,14 @@ const Info: React.FC<InfoProps> = ({ data }) => {
   return (
     <div className="w-[100%] h-auto">
       <h1 className="max-md:text-xl max-lg:text-2xl text-3xl font-bold text-gray-900 h-auto">
-        {data?.name}
+        {data?.productInfo?.name}
       </h1>
       <p className="max-lg:text-lg text-xl mt-5 max-xl:mt-2">
-        {data?.description}
+        {data?.productInfo?.description}
       </p>
       <div className="flex items-end justify-between mt-5 max-xl:mt-2">
         <p className="max-md:text-xl text-2xl text-gray-900">
-          <Currency value={data?.price} />
+          <Currency value={data?.productInfo?.price} />
         </p>
       </div>
       <hr className="my-4" />
@@ -60,7 +60,10 @@ const Info: React.FC<InfoProps> = ({ data }) => {
         </div>
       </div>
       <div className="mt-10 flex items-center gap-x-3">
-        <Button onClick={onAddToCart} className="flex items-center gap-x-2 max-md:text-sm text-lg">
+        <Button
+          onClick={onAddToCart}
+          className="flex items-center gap-x-2 max-md:text-sm text-lg"
+        >
           Add To Cart
           <ShoppingCart size={20} />
         </Button>

@@ -27,20 +27,18 @@ interface ProductPageProps {
 }
 
 interface SpecsCardProps {
-  icon: React.ReactElement,
-  label: string,
-  name: string,
+  icon: React.ReactElement;
+  label: string;
+  name: string;
 }
 
 const SpecsCard: React.FC<SpecsCardProps> = ({ icon, label, name }) => (
   <div className="flex justify-center items-center flex-col gap-5 w-[33%]">
     {icon}
     <h1 className="text-xl max-md:text-lg font-medium text-center">{name}</h1>
-    <p className="max-md:text-sm text-lg text-center font-light">
-      {label}
-    </p>
+    <p className="max-md:text-sm text-lg text-center font-light">{label}</p>
   </div>
-)
+);
 
 const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
   const product = await getProduct(params.productId);
@@ -51,25 +49,26 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
     return null;
   }
 
-  let defaultClassName = "h-16 w-16 text-[#FB6D11] max-md:h-12 max-md:w-12 max-sm:h-8 max-sm:w-8"
+  let defaultClassName =
+    "h-16 w-16 text-[#FB6D11] max-md:h-12 max-md:w-12 max-sm:h-8 max-sm:w-8";
 
   let row1 = [
     {
       icon: <Cpu className={defaultClassName} />,
-      label: product?.operatingSystem,
-      name: "Operating System"
+      label: product?.productInfo?.operatingSystem,
+      name: "Operating System",
     },
     {
       icon: <MemoryStick className={defaultClassName} />,
-      label: product?.processor,
-      name: "Processor"
+      label: product?.productInfo?.processor,
+      name: "Processor",
     },
     {
       icon: <HardDrive className={defaultClassName} />,
-      label: product?.memory,
-      name: "Memory"
-    }
-  ]
+      label: product?.productInfo?.memory,
+      name: "Memory",
+    },
+  ];
 
   let row2 = [
     {
@@ -79,46 +78,46 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
     },
     {
       icon: <Camera className={defaultClassName} />,
-      label: product?.frontCamera,
-      name: "Front Camera"
+      label: product?.productInfo?.frontCamera,
+      name: "Front Camera",
     },
     {
       icon: <SwitchCamera className={defaultClassName} />,
-      label: product?.rearCamera,
-      name: "Rear Camera"
-    }
-  ]
+      label: product?.productInfo?.rearCamera,
+      name: "Rear Camera",
+    },
+  ];
 
   let row3 = [
     {
       icon: <Battery className={defaultClassName} />,
-      label: product?.battery,
+      label: product?.productInfo?.battery,
       name: "Battery",
     },
     {
       icon: <Tv2 className={defaultClassName} />,
-      label: product?.frontCamera,
-      name: "Display"
+      label: product?.productInfo?.frontCamera,
+      name: "Display",
     },
     {
       icon: <RadioTower className={defaultClassName} />,
-      label: product?.connectivity,
-      name: "Connectivity"
-    }
-  ]
+      label: product?.productInfo?.connectivity,
+      name: "Connectivity",
+    },
+  ];
 
   let row4 = [
     {
       icon: <PencilRuler className={defaultClassName} />,
-      label: product?.dimensions,
+      label: product?.productInfo?.dimensions,
       name: "Dimensions",
     },
     {
       icon: <Signal className={defaultClassName} />,
       label: product?.network?.name,
-      name: "Network"
-    }
-  ]
+      name: "Network",
+    },
+  ];
 
   return (
     <div className="bg-white w-full">
@@ -135,22 +134,42 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
             <div className="flex flex-col gap-40 max-md:gap-10 justify-center items-center">
               <div className="flex justify-between items-center max-md:flex-col max-md:gap-10 w-[100%]">
                 {row1.map((specs, index) => (
-                  <SpecsCard key={index} icon={specs.icon} label={specs.label} name={specs.name} />
+                  <SpecsCard
+                    key={index}
+                    icon={specs.icon}
+                    label={specs.label}
+                    name={specs.name}
+                  />
                 ))}
               </div>
               <div className="flex justify-between items-center max-md:flex-col max-md:gap-10 w-[100%]">
                 {row2.map((specs, index) => (
-                  <SpecsCard key={index} icon={specs.icon} label={specs.label} name={specs.name} />
+                  <SpecsCard
+                    key={index}
+                    icon={specs.icon}
+                    label={specs.label}
+                    name={specs.name}
+                  />
                 ))}
               </div>
               <div className="flex justify-between items-center max-md:flex-col max-md:gap-10 w-[100%]">
                 {row3.map((specs, index) => (
-                  <SpecsCard key={index} icon={specs.icon} label={specs.label} name={specs.name} />
+                  <SpecsCard
+                    key={index}
+                    icon={specs.icon}
+                    label={specs.label}
+                    name={specs.name}
+                  />
                 ))}
               </div>
               <div className="flex justify-between items-center max-md:flex-col max-md:gap-10 w-[100%]">
                 {row4.map((specs, index) => (
-                  <SpecsCard key={index} icon={specs.icon} label={specs.label} name={specs.name} />
+                  <SpecsCard
+                    key={index}
+                    icon={specs.icon}
+                    label={specs.label}
+                    name={specs.name}
+                  />
                 ))}
               </div>
             </div>

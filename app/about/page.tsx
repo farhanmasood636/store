@@ -6,7 +6,7 @@ const About = () => {
       </h1>
       <section className="mb-5">
         <p className="max-md:text-sm text-lg text-gray-500">
-          A&A Phones Services LLC is the digital footprint of DirectPromotion &
+          DirectPromotion is the digital footprint of A&A Phones Services LLC &
           leading reCommerce company that sells pre-owned consumer electronics.
           We then inspect, certify and sell them to consumers looking for a
           cost-effective way to stay connected. A&A Phones Services LLC is

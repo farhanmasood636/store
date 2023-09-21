@@ -34,15 +34,21 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
         </div>
         <div className="flex flex-col gap-5">
           <div>
-            <p className="text-lg font-semibold text-black">{data?.name}</p>
-            <Currency value={data?.price} />
+            <p className="text-lg font-semibold text-black">
+              {data?.productInfo?.name}
+            </p>
+            <Currency value={data?.productInfo?.price} />
           </div>
-          <p className="text-black text-sm">Color: <span className="text-gray-500">{data?.color?.name}</span></p>
           <p className="text-black text-sm">
-            Condition: <span className="text-gray-500">{data?.condition?.name}</span>
+            Color: <span className="text-gray-500">{data?.color?.name}</span>
           </p>
           <p className="text-black text-sm">
-            Carrier: <span className="text-gray-500">{data?.carrier?.name}</span>
+            Condition:{" "}
+            <span className="text-gray-500">{data?.condition?.name}</span>
+          </p>
+          <p className="text-black text-sm">
+            Carrier:{" "}
+            <span className="text-gray-500">{data?.carrier?.name}</span>
           </p>
         </div>
       </div>

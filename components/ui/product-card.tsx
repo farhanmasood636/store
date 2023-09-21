@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 import { MouseEventHandler } from "react";
@@ -11,12 +11,10 @@ import useCart from "@/hooks/use-cart";
 import { Product } from "@/types";
 
 interface ProductCard {
-  data: Product
+  data: Product;
 }
 
-const ProductCard: React.FC<ProductCard> = ({
-  data
-}) => {
+const ProductCard: React.FC<ProductCard> = ({ data }) => {
   const previewModal = usePreviewModal();
   const cart = useCart();
 
@@ -59,22 +57,34 @@ const ProductCard: React.FC<ProductCard> = ({
       <div className="bg-gray-200 p-5 rounded-xl">
         <div>
           <a href={`/product/${data?.id}`}>
-            <p className="text-left cursor-pointer font-semibold text-xl max-md:text-lg mb-2">{data?.name}</p>
+            <p className="text-left cursor-pointer font-semibold text-xl max-md:text-lg mb-2">
+              {data?.productInfo?.name}
+            </p>
           </a>
-          <p className="text-left text-sm text-gray-500 mb-2 h-[90px] max-lg:h-[100px]">{data?.description}</p>
+          <p className="text-left text-sm text-gray-500 mb-2 h-[90px] max-lg:h-[100px]">
+            {data?.productInfo?.description}
+          </p>
         </div>
         <div className="flex items-center justify-between mb-3 font-semibold text-xl max-md:text-lg border border-b-black">
-          <Currency value={data?.price} />
+          <Currency value={data?.productInfo?.price} />
         </div>
         <div className="flex items-center gap-2 flex-wrap">
-          <p className="text-sm text-white p-[10px] bg-[#FB6D11] rounded-2xl">{data?.carrier?.name}</p>
-          <p className="text-sm text-white p-[10px] bg-[#FB6D11] rounded-2xl">{data?.condition?.name}</p>
-          <p className="text-sm text-white p-[10px] bg-[#FB6D11] rounded-2xl">{data?.storage?.name}GB</p>
-          <p className="text-sm text-white p-[10px] bg-[#FB6D11] rounded-2xl">{data?.network?.name}</p>
+          <p className="text-sm text-white p-[10px] bg-[#FB6D11] rounded-2xl">
+            {data?.carrier?.name}
+          </p>
+          <p className="text-sm text-white p-[10px] bg-[#FB6D11] rounded-2xl">
+            {data?.condition?.name}
+          </p>
+          <p className="text-sm text-white p-[10px] bg-[#FB6D11] rounded-2xl">
+            {data?.storage?.name}GB
+          </p>
+          <p className="text-sm text-white p-[10px] bg-[#FB6D11] rounded-2xl">
+            {data?.network?.name}
+          </p>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default ProductCard;

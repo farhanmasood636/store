@@ -1,6 +1,17 @@
 export interface Product {
   id: string;
+  productInfo: ProductInfo;
   category: Category;
+  brand: Brand;
+  condition: Condition;
+  storage: Storage;
+  color: Color;
+  carrier: Carrier;
+  network: Network;
+  images: Image[];
+}
+
+export interface ProductInfo {
   name: string;
   description: string;
   price: string;
@@ -14,13 +25,6 @@ export interface Product {
   battery: string;
   connectivity: string;
   dimensions: string;
-  brand: Brand;
-  condition: Condition;
-  storage: Storage;
-  color: Color;
-  carrier: Carrier;
-  network: Network;
-  images: Image[];
 }
 
 export interface Image {
