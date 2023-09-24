@@ -12,7 +12,7 @@ const CategoriesShowdown: React.FC<MainNavProps> = ({ data }) => {
       (route.name === "Mobile Phones" && "categories/category2.jpeg") ||
       (route.name === "Tablets" && "categories/category3.jpeg") ||
       (route.name === "Watches" && "categories/category1.jpeg") ||
-      ("Laptops" && "categories/category4.jpeg"),
+      (route.name === "Laptops" && "categories/category4.jpeg"),
   }));
 
   return (
