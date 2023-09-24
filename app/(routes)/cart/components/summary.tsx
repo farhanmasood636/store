@@ -1,5 +1,5 @@
 import { X } from "lucide-react";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, SyntheticEvent } from "react";
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
 import { toast } from "react-hot-toast";
@@ -76,7 +76,7 @@ const Summary = () => {
     }
   };
 
-  const handleSubmit = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
 
     if (currentStep === steps.length - 1) {
