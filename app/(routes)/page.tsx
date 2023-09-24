@@ -32,7 +32,7 @@ const HomePage = async () => {
           </div>
         </section>
 
-        <h1 className="max-md:text-2xl max-lg:text-3xl text-4xl font-bold mb-10">
+        <h1 className="max-md:text-2xl max-lg:text-3xl text-4xl font-bold mb-10 text-center">
           Browse our <span className="text-[#FB6D11]">Featured</span> Products
         </h1>
         <div className="flex iems-start flex-col gap-y-8 px-4 sm:px-6 lg:px-8 mb-20">

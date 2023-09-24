@@ -7,7 +7,7 @@ const CartItemInfo: React.FC<CartItemInfoProps> = ({ product }) => {
     <div>
       <div className="flex justify-between">
         <p className="text-sm font-semibold text-black">
-          {product?.productInfo?.name}
+          {product?.name}
         </p>
       </div>
 
@@ -15,7 +15,7 @@ const CartItemInfo: React.FC<CartItemInfoProps> = ({ product }) => {
         <p className="text-gray-500">{product?.color}</p>
       </div>
       <p className="mt-1 text-sm font-medium text-gray-900">
-        {product?.productInfo?.price}
+        {product?.price}
       </p>
     </div>
   );

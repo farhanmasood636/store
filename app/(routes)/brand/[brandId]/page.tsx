@@ -12,6 +12,7 @@ import MobileFilters from "./components/mobile-filters";
 import HomeSlider from "@/components/ui/home-slider";
 import getCarriers from "@/actions/get-carriers";
 import getNetworks from "@/actions/get-networks";
+import getMemories from "@/actions/get-memories";
 
 export const revalidate = 0;
 
@@ -25,6 +26,7 @@ interface BrandPageProps {
     conditionId: string;
     carrierId: string;
     networkId: string;
+    memoryId: string;
   };
 }
 
@@ -36,12 +38,14 @@ const BandPage: React.FC<BrandPageProps> = async ({ params, searchParams }) => {
     conditionId: searchParams.conditionId,
     carrierId: searchParams.carrierId,
     networkId: searchParams.networkId,
+    memoryId: searchParams.memoryId,
   });
   const colors = await getColors();
   const storages = await getStorages();
   const conditions = await getConditions();
   const carriers = await getCarriers();
   const networks = await getNetworks();
+  const memories = await getMemories();
 
   return (
     <div className="bg-white">
@@ -57,10 +61,12 @@ const BandPage: React.FC<BrandPageProps> = async ({ params, searchParams }) => {
               conditions={conditions}
               carriers={carriers}
               networks={networks}
+              memories={memories}
             />
             <div className="hidden lg:block">
               <Filter valueKey="colorId" name="Colors" data={colors} />
               <Filter valueKey="storageId" name="Storages" data={storages} />
+              <Filter valueKey="memoryId" name="Memory" data={memories} />
               <Filter
                 valueKey="conditionId"
                 name="Conditions"

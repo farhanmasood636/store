@@ -6,7 +6,7 @@ import { Dialog } from "@headlessui/react";
 
 import IconButton from "@/components/ui/icon-button";
 import Button from "@/components/ui/button";
-import { Carrier, Color, Condition, Network, Storage } from "@/types";
+import { Carrier, Color, Condition, Network, Storage, Memory } from "@/types";
 
 import Filter from "./filter";
 
@@ -16,9 +16,10 @@ interface MobileFiltersProps {
   storages: Storage[],
   carriers: Carrier[],
   networks: Network[],
+  memories: Memory[],
 }
 
-const MobileFilters: React.FC<MobileFiltersProps> = ({ colors, conditions, storages, carriers, networks }) => {
+const MobileFilters: React.FC<MobileFiltersProps> = ({ colors, conditions, storages, carriers, networks, memories }) => {
   const [open, setOpen] = useState(false);
 
   const onOpen = () => setOpen(true);
@@ -48,6 +49,7 @@ const MobileFilters: React.FC<MobileFiltersProps> = ({ colors, conditions, stora
             <div className="p-4">
               <Filter valueKey="colorId" name="Colors" data={colors} />
               <Filter valueKey="storageId" name="Storages" data={storages} />
+              <Filter valueKey="memoryId" name="Memory" data={memories} />
               <Filter valueKey="conditionId" name="Conditions" data={conditions} />
               <Filter valueKey="carrierId" name="Carriers" data={carriers} />
               <Filter valueKey="networkId" name="Networks" data={networks} />

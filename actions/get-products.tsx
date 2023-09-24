@@ -10,6 +10,7 @@ interface Query {
   storageId?: string;
   carrierId?: string;
   networkId?: string;
+  memoryId?: string;
   conditionId?: string;
   isFeatured?: boolean;
 }
@@ -21,6 +22,7 @@ const getProducts = async (query: Query): Promise<Product[]> => {
       colorId: query.colorId,
       brandId: query.brandId,
       storageId: query.storageId,
+      memoryId: query.memoryId,
       conditionId: query.conditionId,
       carrierId: query.carrierId,
       networkId: query.networkId,

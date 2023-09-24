@@ -1,10 +1,13 @@
 export interface Product {
   id: string;
+  name: string;
+  price: string;
   productInfo: ProductInfo;
   category: Category;
   brand: Brand;
   condition: Condition;
   storage: Storage;
+  memory: Memory;
   color: Color;
   carrier: Carrier;
   network: Network;
@@ -14,12 +17,10 @@ export interface Product {
 export interface ProductInfo {
   name: string;
   description: string;
-  price: string;
   isFeatured: boolean;
   display: string;
   operatingSystem: string;
   processor: string;
-  memory: string;
   rearCamera: string;
   frontCamera: string;
   battery: string;
@@ -64,6 +65,11 @@ export interface Carrier {
 }
 
 export interface Network {
+  id: string,
+  name: string
+}
+
+export interface Memory {
   id: string,
   name: string
 }

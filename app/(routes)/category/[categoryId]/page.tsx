@@ -12,6 +12,7 @@ import MobileFilters from "./components/mobile-filters";
 import HomeSlider from "@/components/ui/home-slider";
 import getCarriers from "@/actions/get-carriers";
 import getNetworks from "@/actions/get-networks";
+import getMemories from "@/actions/get-memories";
 
 export const revalidate = 0;
 
@@ -25,6 +26,7 @@ interface CategoryPageProps {
     conditionId: string;
     carrierId: string;
     networkId: string;
+    memoryId: string;
   };
 }
 
@@ -36,6 +38,7 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
     categoryId: params.categoryId,
     colorId: searchParams.colorId,
     storageId: searchParams.storageId,
+    memoryId: searchParams.memoryId,
     conditionId: searchParams.conditionId,
     carrierId: searchParams.carrierId,
     networkId: searchParams.networkId,
@@ -45,6 +48,7 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
   const conditions = await getConditions();
   const carriers = await getCarriers();
   const networks = await getNetworks();
+  const memories = await getMemories();
 
   return (
     <div className="bg-white">
@@ -54,10 +58,17 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
         </div>
         <div className="px-4 sm:px-6 lg:px-8 pb-24">
           <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
-            <MobileFilters colors={colors} storages={storages} conditions={conditions} carriers={carriers} networks={networks} />
-            <div className="hidden lg:block">
+            <MobileFilters
+              colors={colors}
+              storages={storages}
+              conditions={conditions}
+              carriers={carriers}
+              networks={networks}
+              memories={memories}
+            />            <div className="hidden lg:block">
               <Filter valueKey="colorId" name="Colors" data={colors} />
               <Filter valueKey="storageId" name="Storages" data={storages} />
+              <Filter valueKey="memoryId" name="Memory" data={memories} />
               <Filter valueKey="conditionId" name="Conditions" data={conditions} />
               <Filter valueKey="carrierId" name="Carriers" data={carriers} />
               <Filter valueKey="networkId" name="Networks" data={networks} />

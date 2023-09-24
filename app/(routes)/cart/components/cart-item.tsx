@@ -35,9 +35,9 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
         <div className="flex flex-col gap-5">
           <div>
             <p className="text-lg font-semibold text-black">
-              {data?.productInfo?.name}
+              {data?.name}
             </p>
-            <Currency value={data?.productInfo?.price} />
+            <Currency value={data?.price} />
           </div>
           <p className="text-black text-sm">
             Color: <span className="text-gray-500">{data?.color?.name}</span>

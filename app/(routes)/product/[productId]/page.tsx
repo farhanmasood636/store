@@ -65,7 +65,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
     },
     {
       icon: <HardDrive className={defaultClassName} />,
-      label: product?.productInfo?.memory,
+      label: product?.memory?.name,
       name: "Memory",
     },
   ];

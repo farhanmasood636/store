@@ -1,15 +1,112 @@
-"use client";
-
+import React, { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-
 import Button from "@/components/ui/button";
 import Currency from "@/components/ui/currency";
 import useCart from "@/hooks/use-cart";
 import { toast } from "react-hot-toast";
+import Cards from "react-credit-cards"; // Importing the Cards component from react-credit-cards
+import "react-credit-cards/es/styles-compiled.css"; // Importing the CSS styles
+import { X } from "lucide-react";
+import creditCardType from 'credit-card-type';
 
 const Summary = () => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    address: "",
+    zipCode: "",
+    mobileNumber: "",
+    cardNumber: "",
+    expirationDate: "",
+    cvv: "",
+    continueAsGuest: false,
+    acceptTerms: false,
+  });
+  const [showModal, setShowModal] = useState(false);
+  const [currentStep, setCurrentStep] = useState(0);
+  const [cardError, setCardError] = useState("");
+  const steps = ["Personal Details", "Credit Card Details"];
+
+  const [isCardValid, setIsCardValid] = useState(false);
+
+  const handleCardInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+
+    const cardType = creditCardType(value)[0]?.type;
+    const allowedCardTypes = ['american-express', 'visa', 'mastercard', 'discover'];
+    const isAllowedCardType = allowedCardTypes.includes(cardType);
+
+    setIsCardValid(isAllowedCardType);
+
+    if (!isAllowedCardType) {
+      setCardError("This card type is not supported. Please use American Express, Visa, Mastercard, or Discover.");
+    } else {
+      setCardError("");
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  };
+
+  const onCheckout = () => {
+    setCurrentStep(0);
+    setShowModal(true);
+  };
+
+  const nextStep = () => {
+    if (currentStep < steps.length - 1) {
+      setCurrentStep((prevStep) => prevStep + 1);
+    }
+  };
+
+  const prevStep = () => {
+    if (currentStep > 0) {
+      setCurrentStep((prevStep) => prevStep - 1);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (currentStep === steps.length - 1) {
+      if (formData.continueAsGuest && formData.acceptTerms) {
+        setShowModal(false);
+
+        try {
+          const response = await axios.post(
+            `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
+            {
+              productIds: items.map((item) => item.id),
+              formData,
+            }
+          );
+          console.log(response);
+        } catch (error) {
+          console.error("Error processing checkout:", error);
+          toast.error("Error processing checkout.");
+        }
+      }
+    } else {
+      nextStep();
+    }
+  };
+
+  const handleClose = () => {
+    setShowModal(false);
+  };
+
   const searchParams = useSearchParams();
   const items = useCart((state) => state.items);
   const removeAll = useCart((state) => state.removeAll);
@@ -26,19 +123,26 @@ const Summary = () => {
   }, [searchParams, removeAll]);
 
   const totalPrice = items.reduce((total, item) => {
-    return total + Number(item?.productInfo?.price);
+    return total + Number(item?.price);
   }, 0);
 
-  const onCheckout = async () => {
-    const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
-      {
-        productIds: items.map((item) => item.id),
-      }
-    );
+  const isPersonalDetailsFilled =
+    formData.firstName.length >= 6 &&
+    formData.lastName.length >= 6 &&
+    formData.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) &&
+    formData.address &&
+    formData.zipCode &&
+    formData.mobileNumber.match(/^\d{10}$/);
 
-    window.location = response.data.url;
-  };
+  const isCreditCardDetailsFilled =
+    formData.cardNumber.length >= 16 &&
+    formData.cvv.length <= 3 &&
+    formData.expirationDate.length <= 6 && isCardValid;
+
+  const isCheckboxChecked = formData.continueAsGuest && formData.acceptTerms;
+
+  const isNextButtonDisabled =
+    currentStep === 0 && (!isPersonalDetailsFilled || !isCheckboxChecked);
 
   return (
     <div className="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8">
@@ -56,6 +160,176 @@ const Summary = () => {
       >
         Checkout
       </Button>
+      {showModal && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 backdrop-filter backdrop-blur-sm overflow-y-auto p-10">
+          <div className="bg-white p-6 max-w-md rounded-lg shadow-lg">
+            <div className="flex justify-between w-full max-md:mt-10">
+              <h2 className="text-xl font-bold mb-4">Checkout</h2>
+              <X onClick={handleClose} className="h-7 w-6 text-black" />
+            </div>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {currentStep === 0 && (
+                <div className="space-y-4">
+                  <input
+                    type="text"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleInputChange}
+                    placeholder="First Name (min 6 characters)"
+                    required
+                    className="p-2 border border-gray-300 rounded w-full"
+                  />
+                  <input
+                    type="text"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleInputChange}
+                    placeholder="Last Name (min 6 characters)"
+                    required
+                    className="p-2 border border-gray-300 rounded w-full"
+                  />
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder="Email (valid format)"
+                    required
+                    className="p-2 border border-gray-300 rounded w-full"
+                  />
+                  <input
+                    type="text"
+                    name="address"
+                    value={formData.address}
+                    onChange={handleInputChange}
+                    placeholder="Address"
+                    required
+                    className="p-2 border border-gray-300 rounded w-full"
+                  />
+                  <input
+                    type="text"
+                    name="zipCode"
+                    value={formData.zipCode}
+                    onChange={handleInputChange}
+                    placeholder="Zip Code"
+                    required
+                    className="p-2 border border-gray-300 rounded w-full"
+                  />
+                  <input
+                    type="text"
+                    name="mobileNumber"
+                    value={formData.mobileNumber}
+                    onChange={handleInputChange}
+                    placeholder="Mobile Number (10 digits)"
+                    required
+                    className="p-2 border border-gray-300 rounded w-full"
+                  />
+                  <div className="flex items-center space-x-2">
+                    <label className="flex items-center">
+                      <input
+                        type="checkbox"
+                        name="continueAsGuest"
+                        checked={formData.continueAsGuest}
+                        onChange={handleInputChange}
+                        className="form-checkbox appearance-none h-6 w-6 border border-gray-300 rounded-md checked:bg-[#FB6D11] checked:border-transparent focus:outline-none"
+                      />
+                      <span className="text-sm ml-2 font-medium">Continue as Guest</span>
+                    </label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <label className="flex items-center">
+                      <input
+                        type="checkbox"
+                        name="acceptTerms"
+                        checked={formData.acceptTerms}
+                        onChange={handleInputChange}
+                        className="form-checkbox appearance-none h-6 w-6 border border-gray-300 rounded-md checked:bg-[#FB6D11] checked:border-transparent focus:outline-none"
+                      />
+                      <span className="text-sm ml-2 font-medium">
+                        <a href="/terms" target="_blank">
+                          Terms and Conditions
+                        </a>
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              )}
+              {currentStep === 1 && (
+                <div className="space-y-4">
+                  <Cards
+                    number={formData.cardNumber}
+                    name={`${formData.firstName} ${formData.lastName}`}
+                    expiry={formData.expirationDate}
+                    cvc={formData.cvv}
+                  />
+                  <input
+                    type="text"
+                    name="cardNumber"
+                    value={formData.cardNumber}
+                    onChange={handleCardInputChange}
+                    placeholder="Credit Card Number"
+                    required
+                    className="p-2 border border-gray-300 rounded w-full"
+                  />
+                  <input
+                    type="text"
+                    name="expirationDate"
+                    value={formData.expirationDate}
+                    onChange={handleInputChange}
+                    placeholder="Expiration Date"
+                    required
+                    className="p-2 border border-gray-300 rounded w-full"
+                  />
+                  <input
+                    type="text"
+                    name="cvv"
+                    value={formData.cvv}
+                    onChange={handleInputChange}
+                    placeholder="CVV"
+                    required
+                    className="p-2 border border-gray-300 rounded w-full"
+                  />
+                  {cardError && (
+                    <div className="text-red-500 font-semibold">
+                      {cardError}
+                    </div>
+                  )}
+                </div>
+              )}
+              <div className="flex flex-col justify-between mt-6 w-[100%] gap-5">
+                {currentStep > 0 && (
+                  <Button type="button" onClick={prevStep} className="bg-[#FB6D11] text-white hover:bg-black rounded-full w-full">
+                    Previous
+                  </Button>
+                )}
+
+                <Button
+                  className={`w-full bg-[#FB6D11] text-white hover:bg-black rounded-full ${currentStep === 1 && 'hidden'}`}
+                  type="button"
+                  onClick={() => {
+                    if (currentStep === 0 && !isPersonalDetailsFilled) {
+                      return;
+                    }
+                    nextStep();
+                  }}
+                  disabled={isNextButtonDisabled}
+                >
+                  Next
+                </Button>
+                {(currentStep === steps.length - 1 && isCreditCardDetailsFilled) && (
+                  <Button
+                    type="submit"
+                    className="w-full bg-[#FB6D11] text-white hover:bg-black rounded-full"
+                    disabled={!isCreditCardDetailsFilled}
+                  >
+                    Checkout
+                  </Button>
+                )}
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -66,7 +66,7 @@ const ProductCard: React.FC<ProductCard> = ({ data }) => {
           </p>
         </div>
         <div className="flex items-center justify-between mb-3 font-semibold text-xl max-md:text-lg border border-b-black">
-          <Currency value={data?.productInfo?.price} />
+          <Currency value={data?.price} />
         </div>
         <div className="flex items-center gap-2 flex-wrap">
           <p className="text-sm text-white p-[10px] bg-[#FB6D11] rounded-2xl">
