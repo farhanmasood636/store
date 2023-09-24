@@ -1,14 +1,12 @@
-import React, { useState } from "react";
+import { X } from "lucide-react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
+import { toast } from "react-hot-toast";
 import Button from "@/components/ui/button";
 import Currency from "@/components/ui/currency";
 import useCart from "@/hooks/use-cart";
-import { toast } from "react-hot-toast";
-import Cards from "react-credit-cards"; // Importing the Cards component from react-credit-cards
-import "react-credit-cards/es/styles-compiled.css"; // Importing the CSS styles
-import { X } from "lucide-react";
+import Cards from 'react-credit-cards-2';
 import creditCardType from 'credit-card-type';
 
 const Summary = () => {
