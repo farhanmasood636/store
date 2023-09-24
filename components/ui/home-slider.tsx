@@ -101,35 +101,35 @@ const HomeSlider = () => {
     slides = home;
   }
 
-  if (pathname === "/category/5391ed58-ca18-4a98-8680-e4ab536456db") {
+  if (pathname === "/category/6fc78bac-4719-4285-a526-6f036d2bf8b4") {
     slides = tablets;
   }
 
-  if (pathname === "/category/547f618b-6c87-4d1a-96d0-11a85812bae6") {
+  if (pathname === "/category/b2a838db-3b42-4238-9d9d-70727b8049ac") {
     slides = watches;
   }
 
-  if (pathname === "/category/efc988c9-da39-41bc-b48c-8d41310b7d10") {
+  if (pathname === "/category/66752904-6bd8-4c40-91f7-1e308ab90f1e") {
     slides = mobiles;
   }
 
-  if (pathname === "/category/4f692147-4454-41c9-946e-febedceb5d52") {
+  if (pathname === "/category/047769e5-ea41-4273-b2a0-d6df18fd8b4a") {
     slides = laptops;
   }
 
-  if (pathname === "/brand/08a443ba-3788-40d1-a347-6b25a60bb24c") {
+  if (pathname === "/brand/295c3fc5-7da7-4493-8e89-64dcae82af01") {
     slides = apple;
   }
 
-  if (pathname === "/brand/d18e1474-122f-4cf1-9cb2-9f248618e001") {
+  if (pathname === "/brand/388b0f8d-4c59-40ed-a5ef-07c160b55a7f") {
     slides = samsung;
   }
 
-  if (pathname === "/brand/79464df5-b66a-40d1-b81c-4f22561d678d") {
+  if (pathname === "/brand/b17d66cd-4c91-49a0-a706-bd2ce9368902") {
     slides = onePlus;
   }
 
-  if (pathname === "/brand/8c79f71f-be01-432f-bb93-c7a0db283723") {
+  if (pathname === "/brand/69c8439d-f3a1-4598-b011-638cdafaa5bb") {
     slides = google;
   }
 
