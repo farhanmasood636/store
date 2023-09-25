@@ -57,18 +57,18 @@ const ProductCard: React.FC<ProductCard> = ({ data }) => {
       <div className="bg-gray-200 p-5 rounded-xl">
         <div>
           <a href={`/product/${data?.id}`}>
-            <p className="text-left cursor-pointer font-semibold text-xl max-md:text-lg mb-2">
+            <p className="max-sm:h-[60px] h-[80px] text-left cursor-pointer font-semibold text-xl max-md:text-lg mb-2">
               {data?.productInfo?.name}
             </p>
           </a>
-          <p className="text-left text-sm text-gray-500 mb-2 h-[90px] max-lg:h-[100px]">
+          <p className="max-sm:h-[100px] text-left text-sm text-gray-500 mb-2 h-[120px] max-lg:h-[120px]">
             {data?.productInfo?.description}
           </p>
         </div>
         <div className="flex items-center justify-between mb-3 font-semibold text-xl max-md:text-lg border border-b-black">
           <Currency value={data?.price} />
         </div>
-        <div className="flex items-center gap-2 flex-wrap">
+        <div className="max-sm:h-[140px] flex items-start gap-2 flex-wrap">
           <p className="text-sm text-white p-[10px] bg-[#FB6D11] rounded-2xl">
             {data?.carrier?.name}
           </p>
@@ -76,7 +76,7 @@ const ProductCard: React.FC<ProductCard> = ({ data }) => {
             {data?.condition?.name}
           </p>
           <p className="text-sm text-white p-[10px] bg-[#FB6D11] rounded-2xl">
-            {data?.storage?.name}GB
+            {data?.storage?.name}
           </p>
           <p className="text-sm text-white p-[10px] bg-[#FB6D11] rounded-2xl">
             {data?.network?.name}

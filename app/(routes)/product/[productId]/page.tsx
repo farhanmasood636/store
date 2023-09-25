@@ -19,13 +19,11 @@ import {
 } from "lucide-react";
 
 export const revalidate = 0;
-
 interface ProductPageProps {
   params: {
     productId: string;
   };
 }
-
 interface SpecsCardProps {
   icon: React.ReactElement;
   label: string;
@@ -73,7 +71,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
   let row2 = [
     {
       icon: <Database className={defaultClassName} />,
-      label: `${product?.storage?.name}GB`,
+      label: `${product?.storage?.name}`,
       name: "Storage",
     },
     {
@@ -96,7 +94,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
     },
     {
       icon: <Tv2 className={defaultClassName} />,
-      label: product?.productInfo?.frontCamera,
+      label: product?.productInfo?.display,
       name: "Display",
     },
     {

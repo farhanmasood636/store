@@ -35,11 +35,10 @@ const HomeSlider = () => {
   ];
 
   let apple = [
-    "/apple/slide1.jpg",
-    "/apple/slide2.jpg",
+    "/apple/slide2.jpeg",
     "/apple/slide3.jpg",
     "/apple/slide4.jpg",
-    "/apple/slide5.jpg",
+    "/apple/slide5.jpeg",
     "/apple/slide6.png",
     "/apple/slide7.jpg",
   ];
@@ -84,8 +83,6 @@ const HomeSlider = () => {
     "/mobiles/slide2.jpg",
     "/mobiles/slide3.jpg",
     "/mobiles/slide4.jpg",
-    "/mobiles/slide5.webp",
-    "/mobiles/slide6.jpeg",
     "/mobiles/slide7.webp",
     "/mobiles/slide8.jpg",
   ];

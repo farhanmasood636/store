@@ -42,7 +42,7 @@ const Info: React.FC<InfoProps> = ({ data }) => {
         <div className="flex items-center gap-x-4 text-sm">
           <h3 className="font-semibold text-black">Storage:</h3>
           <p className="border border-black w-[100px] text-black text-center rounded-md py-[5px]">
-            {data?.storage?.name}GB
+            {data?.storage?.name}
           </p>
         </div>
         <div className="flex items-center gap-x-4 text-sm">
@@ -53,6 +53,9 @@ const Info: React.FC<InfoProps> = ({ data }) => {
         </div>
         <div className="flex items-center gap-x-4 text-sm">
           <h3 className="font-semibold text-black">Color:</h3>
+          <p className="text-black text-center">
+            {data?.color?.name}
+          </p>
           <div
             className="h-6 w-6 rounded-full border border-gray-600"
             style={{ backgroundColor: data?.color?.value }}
