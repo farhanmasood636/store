@@ -3,8 +3,6 @@
 import { Product } from "@/types";
 import { useState, useEffect } from "react";
 
-import Currency from "@/components/ui/currency";
-
 interface SearchBarProps {
   data: Product[];
 }

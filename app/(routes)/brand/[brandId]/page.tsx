@@ -2,7 +2,7 @@ import Container from "@/components/ui/container";
 import ProductCard from "@/components/ui/product-card";
 import NoResults from "@/components/ui/no-results";
 
-import getProducts from "@/actions/get-products";
+import getAllProducts1 from "@/actions/get-all-products-1";
 import getColors from "@/actions/get-colors";
 import getStorages from "@/actions/get-storages";
 import getConditions from "@/actions/get-conditions";
@@ -10,6 +10,7 @@ import getConditions from "@/actions/get-conditions";
 import Filter from "./components/filter";
 import MobileFilters from "./components/mobile-filters";
 import HomeSlider from "@/components/ui/home-slider";
+
 import getCarriers from "@/actions/get-carriers";
 import getNetworks from "@/actions/get-networks";
 import getMemories from "@/actions/get-memories";
@@ -30,8 +31,11 @@ interface BrandPageProps {
   };
 }
 
-const BandPage: React.FC<BrandPageProps> = async ({ params, searchParams }) => {
-  const products = await getProducts({
+const BrandPage: React.FC<BrandPageProps> = async ({
+  params,
+  searchParams,
+}) => {
+  const products = await getAllProducts1({
     brandId: params.brandId,
     colorId: searchParams.colorId,
     storageId: searchParams.storageId,
@@ -90,4 +94,4 @@ const BandPage: React.FC<BrandPageProps> = async ({ params, searchParams }) => {
   );
 };
 
-export default BandPage;
+export default BrandPage;

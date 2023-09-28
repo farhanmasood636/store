@@ -41,7 +41,7 @@ const links = [
 const Footer = () => {
   return (
     <div className="bg-black w-[100%] flex flex-col p-5">
-      <div className="flex flex-col bg-black py-10 max-w-7xl gap-10">
+      <div className="flex flex-col bg-black py-10 max-w-7xl gap-10 mx-auto justify-between">
         <div className="flex justify-between gap-12 flex-wrap w-[100%]">
           <div className="flex flex-col gap-10">
             <h1 className="text-[#FB6D11] text-xl font-bold"> Contact</h1>

@@ -3,9 +3,9 @@ import { Product } from "@/types";
 const URL = `${process.env.NEXT_PUBLIC_API_URL}/products`;
 
 const getAllProducts = async (): Promise<Product[]> => {
-    const res = await fetch(URL);
+  const res = await fetch(URL);
 
-    return res.json();
+  return res.json();
 };
 
 export default getAllProducts;

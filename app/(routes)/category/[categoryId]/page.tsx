@@ -65,11 +65,16 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
               carriers={carriers}
               networks={networks}
               memories={memories}
-            />            <div className="hidden lg:block">
+            />{" "}
+            <div className="hidden lg:block">
               <Filter valueKey="colorId" name="Colors" data={colors} />
               <Filter valueKey="storageId" name="Storages" data={storages} />
               <Filter valueKey="memoryId" name="Memory" data={memories} />
-              <Filter valueKey="conditionId" name="Conditions" data={conditions} />
+              <Filter
+                valueKey="conditionId"
+                name="Conditions"
+                data={conditions}
+              />
               <Filter valueKey="carrierId" name="Carriers" data={carriers} />
               <Filter valueKey="networkId" name="Networks" data={networks} />
             </div>

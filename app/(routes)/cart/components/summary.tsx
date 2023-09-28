@@ -6,24 +6,29 @@ import { toast } from "react-hot-toast";
 import Button from "@/components/ui/button";
 import Currency from "@/components/ui/currency";
 import useCart from "@/hooks/use-cart";
-import Cards from 'react-credit-cards-2';
-import 'react-credit-cards-2/dist/es/styles-compiled.css';
-import creditCardType from 'credit-card-type';
+import Cards from "react-credit-cards-2";
+import "react-credit-cards-2/dist/es/styles-compiled.css";
+import creditCardType from "credit-card-type";
 
 const Summary = () => {
   const [formData, setFormData] = useState({
+    country: "United States", // Added country field with default value "United States"
     firstName: "",
     lastName: "",
-    email: "",
     address: "",
+    aptSuite: "",
+    city: "",
+    state: "",
     zipCode: "",
-    mobileNumber: "",
+    phone: "",
+    email: "",
     cardNumber: "",
     expirationDate: "",
     cvv: "",
     continueAsGuest: false,
     acceptTerms: false,
   });
+
   const [showModal, setShowModal] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
   const [cardError, setCardError] = useState("");
@@ -39,13 +44,20 @@ const Summary = () => {
     }));
 
     const cardType = creditCardType(value)[0]?.type;
-    const allowedCardTypes = ['american-express', 'visa', 'mastercard', 'discover'];
+    const allowedCardTypes = [
+      "american-express",
+      "visa",
+      "mastercard",
+      "discover",
+    ];
     const isAllowedCardType = allowedCardTypes.includes(cardType);
 
     setIsCardValid(isAllowedCardType);
 
     if (!isAllowedCardType) {
-      setCardError("This card type is not supported. Please use American Express, Visa, Mastercard, or Discover.");
+      setCardError(
+        "This card type is not supported. Please use American Express, Visa, Mastercard, or Discover."
+      );
     } else {
       setCardError("");
     }
@@ -91,7 +103,6 @@ const Summary = () => {
               formData,
             }
           );
-          console.log(response);
         } catch (error) {
           console.error("Error processing checkout:", error);
           toast.error("Error processing checkout.");
@@ -126,17 +137,18 @@ const Summary = () => {
   }, 0);
 
   const isPersonalDetailsFilled =
-    formData.firstName.length >= 6 &&
-    formData.lastName.length >= 6 &&
+    formData.firstName.length > 0 &&
+    formData.lastName.length > 0 &&
     formData.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) &&
     formData.address &&
     formData.zipCode &&
-    formData.mobileNumber.match(/^\d{10}$/);
+    formData.phone.match(/^\d{10}$/);
 
   const isCreditCardDetailsFilled =
     formData.cardNumber.length >= 16 &&
     formData.cvv.length <= 3 &&
-    formData.expirationDate.length <= 6 && isCardValid;
+    formData.expirationDate.length <= 6 &&
+    isCardValid;
 
   const isCheckboxChecked = formData.continueAsGuest && formData.acceptTerms;
 
@@ -170,32 +182,42 @@ const Summary = () => {
               {currentStep === 0 && (
                 <div className="space-y-4">
                   <input
-                    type="text"
-                    name="firstName"
-                    value={formData.firstName}
-                    onChange={handleInputChange}
-                    placeholder="First Name (min 6 characters)"
-                    required
-                    className="p-2 border border-gray-300 rounded w-full"
-                  />
-                  <input
-                    type="text"
-                    name="lastName"
-                    value={formData.lastName}
-                    onChange={handleInputChange}
-                    placeholder="Last Name (min 6 characters)"
-                    required
-                    className="p-2 border border-gray-300 rounded w-full"
-                  />
-                  <input
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    placeholder="Email (valid format)"
+                    placeholder="Email"
                     required
                     className="p-2 border border-gray-300 rounded w-full"
                   />
+                  <select
+                    name="country"
+                    value="United States"
+                    disabled
+                    className="p-2 border border-gray-300 rounded w-full"
+                  >
+                    <option value="United States">United States</option>
+                  </select>
+                  <div className="flex space-x-4">
+                    <input
+                      type="text"
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleInputChange}
+                      placeholder="First Name"
+                      required
+                      className="p-2 border border-gray-300 rounded w-full"
+                    />
+                    <input
+                      type="text"
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleInputChange}
+                      placeholder="Last Name"
+                      required
+                      className="p-2 border border-gray-300 rounded w-full"
+                    />
+                  </div>
                   <input
                     type="text"
                     name="address"
@@ -207,19 +229,99 @@ const Summary = () => {
                   />
                   <input
                     type="text"
-                    name="zipCode"
-                    value={formData.zipCode}
+                    name="aptSuite"
+                    value={formData.aptSuite}
                     onChange={handleInputChange}
-                    placeholder="Zip Code"
-                    required
+                    placeholder="Apartment Suite (optional)"
                     className="p-2 border border-gray-300 rounded w-full"
                   />
+                  <div className="flex space-x-4">
+                    <input
+                      type="text"
+                      name="city"
+                      value={formData.city}
+                      onChange={handleInputChange}
+                      placeholder="City"
+                      required
+                      className="p-2 border border-gray-300 rounded w-full"
+                    />
+                    <select
+                      name="state"
+                      value={formData.state}
+                      // onChange={handleInputChange}
+                      required
+                      className="p-2 border border-gray-300 rounded w-full"
+                    >
+                      <option value="">Select State</option>
+                      <option value="AL">Alabama</option>
+                      <option value="AK">Alaska</option>
+                      <option value="AZ">Arizona</option>
+                      <option value="AR">Arkansas</option>
+                      <option value="CA">California</option>
+                      <option value="CO">Colorado</option>
+                      <option value="CT">Connecticut</option>
+                      <option value="DE">Delaware</option>
+                      <option value="FL">Florida</option>
+                      <option value="GA">Georgia</option>
+                      <option value="HI">Hawaii</option>
+                      <option value="ID">Idaho</option>
+                      <option value="IL">Illinois</option>
+                      <option value="IN">Indiana</option>
+                      <option value="IA">Iowa</option>
+                      <option value="KS">Kansas</option>
+                      <option value="KY">Kentucky</option>
+                      <option value="LA">Louisiana</option>
+                      <option value="ME">Maine</option>
+                      <option value="MD">Maryland</option>
+                      <option value="MA">Massachusetts</option>
+                      <option value="MI">Michigan</option>
+                      <option value="MN">Minnesota</option>
+                      <option value="MS">Mississippi</option>
+                      <option value="MO">Missouri</option>
+                      <option value="MT">Montana</option>
+                      <option value="NE">Nebraska</option>
+                      <option value="NV">Nevada</option>
+                      <option value="NH">New Hampshire</option>
+                      <option value="NJ">New Jersey</option>
+                      <option value="NM">New Mexico</option>
+                      <option value="NY">New York</option>
+                      <option value="NC">North Carolina</option>
+                      <option value="ND">North Dakota</option>
+                      <option value="OH">Ohio</option>
+                      <option value="OK">Oklahoma</option>
+                      <option value="OR">Oregon</option>
+                      <option value="PA">Pennsylvania</option>
+                      <option value="RI">Rhode Island</option>
+                      <option value="SC">South Carolina</option>
+                      <option value="SD">South Dakota</option>
+                      <option value="TN">Tennessee</option>
+                      <option value="TX">Texas</option>
+                      <option value="UT">Utah</option>
+                      <option value="VT">Vermont</option>
+                      <option value="VA">Virginia</option>
+                      <option value="WA">Washington</option>
+                      <option value="WV">West Virginia</option>
+                      <option value="WI">Wisconsin</option>
+                      <option value="WY">Wyoming</option>
+                    </select>
+
+                    <input
+                      type="text"
+                      name="zipCode"
+                      value={formData.zipCode}
+                      onChange={handleInputChange}
+                      placeholder="Zip Code"
+                      required
+                      className="p-2 border border-gray-300 rounded w-full"
+                    />
+                  </div>
                   <input
-                    type="text"
-                    name="mobileNumber"
-                    value={formData.mobileNumber}
+                    type="tel"
+                    name="phone"
+                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                    value={formData.phone}
                     onChange={handleInputChange}
-                    placeholder="Mobile Number (10 digits)"
+                    placeholder="Phone Number"
                     required
                     className="p-2 border border-gray-300 rounded w-full"
                   />
@@ -232,7 +334,9 @@ const Summary = () => {
                         onChange={handleInputChange}
                         className="form-checkbox appearance-none h-6 w-6 border border-gray-300 rounded-md checked:bg-[#FB6D11] checked:border-transparent focus:outline-none"
                       />
-                      <span className="text-sm ml-2 font-medium">Continue as Guest</span>
+                      <span className="text-sm ml-2 font-medium">
+                        Continue as Guest
+                      </span>
                     </label>
                   </div>
                   <div className="flex items-center space-x-2">
@@ -244,7 +348,7 @@ const Summary = () => {
                         onChange={handleInputChange}
                         className="form-checkbox appearance-none h-6 w-6 border border-gray-300 rounded-md checked:bg-[#FB6D11] checked:border-transparent focus:outline-none"
                       />
-                      <span className="text-sm ml-2 font-medium">
+                      <span className="text-sm ml-2 font-medium text-blue-600">
                         <a href="/terms" target="_blank">
                           Terms and Conditions
                         </a>
@@ -297,13 +401,19 @@ const Summary = () => {
               )}
               <div className="flex flex-col justify-between mt-6 w-[100%] gap-5">
                 {currentStep > 0 && (
-                  <Button type="button" onClick={prevStep} className="bg-[#FB6D11] text-white hover:bg-black rounded-full w-full">
+                  <Button
+                    type="button"
+                    onClick={prevStep}
+                    className="bg-[#FB6D11] text-white hover:bg-black rounded-full w-full"
+                  >
                     Previous
                   </Button>
                 )}
 
                 <Button
-                  className={`w-full bg-[#FB6D11] text-white hover:bg-black rounded-full ${currentStep === 1 && 'hidden'}`}
+                  className={`w-full bg-[#FB6D11] text-white hover:bg-black rounded-full ${
+                    currentStep === 1 && "hidden"
+                  }`}
                   type="button"
                   onClick={() => {
                     if (currentStep === 0 && !isPersonalDetailsFilled) {
@@ -315,15 +425,16 @@ const Summary = () => {
                 >
                   Next
                 </Button>
-                {(currentStep === steps.length - 1 && isCreditCardDetailsFilled) && (
-                  <Button
-                    type="submit"
-                    className="w-full bg-[#FB6D11] text-white hover:bg-black rounded-full"
-                    disabled={!isCreditCardDetailsFilled}
-                  >
-                    Checkout
-                  </Button>
-                )}
+                {currentStep === steps.length - 1 &&
+                  isCreditCardDetailsFilled && (
+                    <Button
+                      type="submit"
+                      className="w-full bg-[#FB6D11] text-white hover:bg-black rounded-full"
+                      disabled={!isCreditCardDetailsFilled}
+                    >
+                      Checkout
+                    </Button>
+                  )}
               </div>
             </form>
           </div>

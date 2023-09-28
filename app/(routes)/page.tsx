@@ -15,7 +15,6 @@ const HomePage = async () => {
   const categories = await getCategories();
 
   return (
-    <>
       <Container>
         <div className="mb-20">
           <HomeSlider />
@@ -40,7 +39,6 @@ const HomePage = async () => {
         </div>
         <OurWorkStructure />
       </Container>
-    </>
   );
 };
 
