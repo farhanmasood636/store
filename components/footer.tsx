@@ -105,6 +105,11 @@ const Footer = () => {
                 alt="discover logo"
                 className="h-10 w-10"
               />
+              <img
+                src="/logos/bank-transfer.png"
+                alt="discover logo"
+                className="h-10 w-10"
+              />
             </div>
           </div>
           <div className="flex flex-col gap-5">
