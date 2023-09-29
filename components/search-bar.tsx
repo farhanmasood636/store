@@ -17,7 +17,11 @@ const SearchBar: React.FC<SearchBarProps> = ({ data }) => {
         .toLowerCase()
         .includes(searchTerm.toLowerCase())
     );
-    setMatchedProducts(matched);
+
+    const shuffledProducts = matched.sort(() => 0.5 - Math.random());
+    const selectedProducts = shuffledProducts.slice(0, 4);
+
+    setMatchedProducts(selectedProducts);
   }, [searchTerm, data]);
 
   return (
