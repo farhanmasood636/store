@@ -55,7 +55,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ data }) => {
                       <p className="text-lg">{product?.productInfo?.name}</p>
                       <div className="flex gap-5">
                         <p className="text-sm">{product?.condition?.name}</p>
-                        <p className="text-sm">{product?.storage?.name}GB</p>
+                        <p className="text-sm">{product?.storage?.name}</p>
                         <p className="text-sm">{product?.carrier?.name}</p>
                       </div>
                     </div>
