@@ -54,7 +54,6 @@ const HomeSlider = () => {
   let google = [
     "/google/slide1.jpg",
     "/google/slide2.jpg",
-    "/google/slide3.jpg",
     "/google/slide4.jpg",
     "/google/slide5.jpg",
   ];
