@@ -31,7 +31,7 @@ const HomeSlider = () => {
     "/samsung/slide2.jpg",
     "/samsung/slide3.jpg",
     "/samsung/slide4.jpg",
-    "/samsung/slide5.jpg",
+    "/samsung/slide5.jpeg",
   ];
 
   let apple = [
@@ -54,6 +54,7 @@ const HomeSlider = () => {
   let google = [
     "/google/slide1.jpg",
     "/google/slide2.jpg",
+    "/google/slide3.jpeg",
     "/google/slide4.jpg",
     "/google/slide5.jpg",
   ];
