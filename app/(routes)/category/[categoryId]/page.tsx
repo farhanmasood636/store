@@ -1,18 +1,17 @@
+import Products from "@/components/products";
+import HomeSlider from "@/components/ui/home-slider";
 import Container from "@/components/ui/container";
-import ProductCard from "@/components/ui/product-card";
-import NoResults from "@/components/ui/no-results";
 
 import getProducts from "@/actions/get-products";
 import getColors from "@/actions/get-colors";
 import getStorages from "@/actions/get-storages";
 import getConditions from "@/actions/get-conditions";
-
-import Filter from "./components/filter";
-import MobileFilters from "./components/mobile-filters";
-import HomeSlider from "@/components/ui/home-slider";
 import getCarriers from "@/actions/get-carriers";
 import getNetworks from "@/actions/get-networks";
 import getMemories from "@/actions/get-memories";
+
+import Filter from "./components/filter";
+import MobileFilters from "./components/mobile-filters";
 
 export const revalidate = 0;
 
@@ -78,14 +77,7 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
               <Filter valueKey="carrierId" name="Carriers" data={carriers} />
               <Filter valueKey="networkId" name="Networks" data={networks} />
             </div>
-            <div className="mt-6 lg:col-span-4 lg:mt-0">
-              {products.length === 0 && <NoResults />}
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                {products.map((item) => (
-                  <ProductCard key={item.id} data={item} />
-                ))}
-              </div>
-            </div>
+            <Products products={products} />
           </div>
         </div>
       </Container>
