@@ -9,16 +9,16 @@ import useCart from "@/hooks/use-cart";
 import Cards from "react-credit-cards-2";
 import "react-credit-cards-2/dist/es/styles-compiled.css";
 import creditCardType from "credit-card-type";
+import { Loader } from "@/components/ui/loader";
 
 const Summary = () => {
   const [formData, setFormData] = useState({
-    country: "United States", // Added country field with default value "United States"
+    country: "United States",
     firstName: "",
     lastName: "",
     address: "",
     aptSuite: "",
     city: "",
-    state: "",
     zipCode: "",
     phone: "",
     email: "",
@@ -32,6 +32,7 @@ const Summary = () => {
   const [showModal, setShowModal] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
   const [cardError, setCardError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const steps = ["Personal Details", "Credit Card Details"];
 
   const [isCardValid, setIsCardValid] = useState(false);
@@ -94,7 +95,7 @@ const Summary = () => {
     if (currentStep === steps.length - 1) {
       if (formData.continueAsGuest && formData.acceptTerms) {
         setShowModal(false);
-
+        setIsLoading(true);
         try {
           const response = await axios.post(
             `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
@@ -103,9 +104,17 @@ const Summary = () => {
               formData,
             }
           );
+
+          if (response) {
+            toast.success("Purchase Successfull");
+            removeAll();
+          }
+          console.log(response);
         } catch (error) {
           console.error("Error processing checkout:", error);
           toast.error("Error processing checkout.");
+        } finally {
+          setIsLoading(false);
         }
       }
     } else {
@@ -166,10 +175,10 @@ const Summary = () => {
       </div>
       <Button
         onClick={onCheckout}
-        disabled={items.length === 0}
-        className="w-full mt-6"
+        disabled={items.length === 0 || isLoading}
+        className="w-full mt-6 flex items-center justify-center"
       >
-        Checkout
+        {isLoading ? <Loader /> : "Checkout"}
       </Button>
       {showModal && (
         <div className="fixed inset-0 flex items-center justify-center z-50 backdrop-filter backdrop-blur-sm overflow-y-auto p-10">
@@ -245,66 +254,6 @@ const Summary = () => {
                       required
                       className="p-2 border border-gray-300 rounded w-full"
                     />
-                    <select
-                      name="state"
-                      value={formData.state}
-                      // onChange={handleInputChange}
-                      required
-                      className="p-2 border border-gray-300 rounded w-full"
-                    >
-                      <option value="">Select State</option>
-                      <option value="AL">Alabama</option>
-                      <option value="AK">Alaska</option>
-                      <option value="AZ">Arizona</option>
-                      <option value="AR">Arkansas</option>
-                      <option value="CA">California</option>
-                      <option value="CO">Colorado</option>
-                      <option value="CT">Connecticut</option>
-                      <option value="DE">Delaware</option>
-                      <option value="FL">Florida</option>
-                      <option value="GA">Georgia</option>
-                      <option value="HI">Hawaii</option>
-                      <option value="ID">Idaho</option>
-                      <option value="IL">Illinois</option>
-                      <option value="IN">Indiana</option>
-                      <option value="IA">Iowa</option>
-                      <option value="KS">Kansas</option>
-                      <option value="KY">Kentucky</option>
-                      <option value="LA">Louisiana</option>
-                      <option value="ME">Maine</option>
-                      <option value="MD">Maryland</option>
-                      <option value="MA">Massachusetts</option>
-                      <option value="MI">Michigan</option>
-                      <option value="MN">Minnesota</option>
-                      <option value="MS">Mississippi</option>
-                      <option value="MO">Missouri</option>
-                      <option value="MT">Montana</option>
-                      <option value="NE">Nebraska</option>
-                      <option value="NV">Nevada</option>
-                      <option value="NH">New Hampshire</option>
-                      <option value="NJ">New Jersey</option>
-                      <option value="NM">New Mexico</option>
-                      <option value="NY">New York</option>
-                      <option value="NC">North Carolina</option>
-                      <option value="ND">North Dakota</option>
-                      <option value="OH">Ohio</option>
-                      <option value="OK">Oklahoma</option>
-                      <option value="OR">Oregon</option>
-                      <option value="PA">Pennsylvania</option>
-                      <option value="RI">Rhode Island</option>
-                      <option value="SC">South Carolina</option>
-                      <option value="SD">South Dakota</option>
-                      <option value="TN">Tennessee</option>
-                      <option value="TX">Texas</option>
-                      <option value="UT">Utah</option>
-                      <option value="VT">Vermont</option>
-                      <option value="VA">Virginia</option>
-                      <option value="WA">Washington</option>
-                      <option value="WV">West Virginia</option>
-                      <option value="WI">Wisconsin</option>
-                      <option value="WY">Wyoming</option>
-                    </select>
-
                     <input
                       type="text"
                       name="zipCode"
