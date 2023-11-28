@@ -50,7 +50,7 @@ const Footer = () => {
               <div className="flex gap-5 items-center">
                 <PhoneCall className="h-4 w-4 text-white" />
                 <div className="text-white flex flex-col text-sm gap-2">
-                  <p>+1 779 218-8306</p>
+                  <p>+1 (786) 772-5533</p>
                   <p>9 AM – 6 PM EST</p>
                   <p>Monday to Saturday</p>
                 </div>
