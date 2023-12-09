@@ -278,20 +278,6 @@ const Summary = () => {
                     <label className="flex items-center">
                       <input
                         type="checkbox"
-                        name="continueAsGuest"
-                        checked={formData.continueAsGuest}
-                        onChange={handleInputChange}
-                        className="form-checkbox appearance-none h-6 w-6 border border-gray-300 rounded-md checked:bg-[#FB6D11] checked:border-transparent focus:outline-none"
-                      />
-                      <span className="text-sm ml-2 font-medium">
-                        Continue as Guest
-                      </span>
-                    </label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <label className="flex items-center">
-                      <input
-                        type="checkbox"
                         name="acceptTerms"
                         checked={formData.acceptTerms}
                         onChange={handleInputChange}
