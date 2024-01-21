@@ -82,7 +82,7 @@ const Footer = () => {
                 >
                   <Instagram className="h-8 w-8 text-white hover:text-[#FB6D11]" />
                 </a>
-                <a href="https://wa.me/+17792188306" target="_blank">
+                <a href="https://wa.me/+17867725533" target="_blank">
                   <BsWhatsapp className="h-8 w-8 text-white hover:text-[#FB6D11]" />
                 </a>
               </div>
