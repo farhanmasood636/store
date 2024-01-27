@@ -127,7 +127,7 @@ const Footer = () => {
             </div>
           </div>
           <p className="text-sm text-white text-center font-bold">
-            2023 All Rights Reserved – A&A Phone Servcies LLC
+            2024 All Rights Reserved – A&A Phone Servcies LLC
           </p>
         </div>
       </Container>
