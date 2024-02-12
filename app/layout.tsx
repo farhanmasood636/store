@@ -19,7 +19,7 @@ export default function RootLayout({
       <head>
         <meta
           title="description"
-          content="At Direct Promotion, find the best deals on Refurbished Cell Phones, iPhones, Tablets, iPads, Smartwatches, MacBooks & more. Compare leading brands' prices and save time. All refurbished devices are thoroughly tested, ensuring functionality. Enjoy reduced prices and transparent information on cosmetic flaws. Shop now!"
+          content="Discover unbeatable deals on refurbished devices like iPhones, iPads, MacBooks, and more at Direct Promotion. Shop for refurbished iPhone, Apple refurbished iPhone, used iPhones for sale unlocked, cheap refurbished iPhone, Samsung smartwatch, smart watches, refurbished MacBook, refurbished MacBook Pro, best smartwatch, used iPhones, Apple smart watch, Android smartwatch, and used MacBook Air. Professionally tested with 15-day warranty. Shop confidently with transparent disclosure of cosmetic flaws. Save big, shop smart at Direct Promotion!"
         ></meta>
         <script
           async
