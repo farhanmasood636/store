@@ -1,7 +1,5 @@
 import { Facebook, Instagram, Mail, PhoneCall } from "lucide-react";
 import { BsWhatsapp } from "react-icons/bs";
-import { FaCcVisa, FaCcMastercard, FaCcDiscover } from "react-icons/fa";
-import { SiAmericanexpress } from "react-icons/si";
 import Container from "./ui/container";
 
 const links = [
@@ -36,6 +34,10 @@ const links = [
   {
     href: "/terms",
     label: "Terms & Conditions",
+  },
+  {
+    href: "/blogs",
+    label: "Blogs",
   },
 ];
 
