@@ -1,4 +1,3 @@
-"use client";
 import BlogList from "@/components/blogs/blog-list";
 
 const Blogs = () => {

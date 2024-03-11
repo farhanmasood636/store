@@ -12,13 +12,13 @@ const Blog = () => {
     slug: string;
     description: string;
   }>();
-  if (!slug) {
-    return <div>Loading...</div>;
-  }
 
   useEffect(() => {
     setBlog(blogs.find((b) => b.slug === slug));
   }, [slug]);
+  if (!slug) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="max-w-7xl my-10 mx-auto max-2xl:mx-5">
