@@ -32,6 +32,10 @@ const links = [
     label: "Cookies Policy",
   },
   {
+    href: "/shipping-policy",
+    label: "Shipping Policy",
+  },
+  {
     href: "/terms",
     label: "Terms & Conditions",
   },
