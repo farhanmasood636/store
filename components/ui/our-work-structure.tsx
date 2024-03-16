@@ -98,12 +98,10 @@ const OurWorkStructure = () => {
           </div>
           <div className="border border-[#FB6D11] shadow-lg rounded-xl p-4 hover:bg-gradient-to-r hover:from-red-50 hover:to-sky-50">
             <h1 className="font-bold text-xl pb-4 max-md:text-lg">
-              Transparent <span className="text-[#FB6D11]">Policies</span>{" "}
+              Unbeatable <span className="text-[#FB6D11]">Refurbished Deals</span>{" "}
             </h1>
             <p className="text-lg max-md:text-sm">
-              Our ecommerce store is committed to transparency, ensuring that
-              all pricing, fees, and charges are clearly outlined at every stage
-              of your shopping experience.
+              Explore our one-stop tech destination for unbeatable deals on refurbished iPhones, Apple Watch Series, laptops, Bluetooth headphones, phone cases, gaming headsets, wireless earbuds, and more! Upgrade your gadgets without breaking the bank. Shop now!
             </p>
           </div>
         </div>
